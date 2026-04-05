@@ -1,0 +1,13 @@
+# Node
+node_modules/
+frontend/node_modules/
+
+# Laravel
+backend/vendor/
+backend/.env
+
+# Logs
+*.log
+
+# OS
+.DS_Store
