@@ -1,0 +1,48 @@
+
+
+Este pedazo de codigo tiene que unirse al modulo de la api como es un modulo prefiero 
+no integarlo directamente si no que quede como el avance
+para que solo autrize al usuario ingresar a si ha iniciado sesion 
+con algun rol se adjunta este codigo:
+
+
+Route::middleware(['auth:sanctum', 'role:admin'])->get('/ruta-protegida', function () {
+    return response()->json(['message' => 'Entraste como un usuario admin']);
+});
+
+
+
+
+ejemplo en parte de la api asi se veria:
+Estas son las recomendaciones de IA para integrarlo a la api
+
+
+Route::middleware('auth:sanctum')->group(function () {
+
+    // Cualquier usuario logueado puede ver su perfil
+    Route::get('/mi-perfil', function (Request $request) {
+        return $request->user();
+    });
+
+  
+    // ZONA DE ADMINISTRADORES (Requieren login Y rol de 'admin')
+
+    Route::middleware('role:admin')->group(function () {
+        
+        // Aquí puedes poner tu ruta de prueba:
+        Route::get('/ruta-protegida', function () {
+            return response()->json(['message' => '¡Entraste como admin!']);
+        });
+
+        // Y aquí irían las rutas reales de administración para tu Cartera de Servicios
+        // Route::post('/servicios/crear', [ServicioController::class, 'store']);
+        // Route::delete('/usuarios/{id}', [UserController::class, 'destroy']);
+    });
+
+  
+    // ZONA DE CLIENTES/USUARIOS (Requieren login Y rol de 'cliente')
+  
+    Route::middleware('role:cliente')->group(function () {
+        // Rutas exclusivas para los clientes
+        // Route::get('/mis-compras', [CompraController::class, 'index']);
+    });
