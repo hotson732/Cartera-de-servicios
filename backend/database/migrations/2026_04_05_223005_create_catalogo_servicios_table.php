@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('nombre', 200);
             $table->text('descripcion');
 
-            // Enum como check constraint en PostgreSQL
+            // Enumerado como check constraint en psqñ
             $table->string('categoria', 40);
 
             $table->string('imagen_path', 300)->nullable();     // storage/public/catalogo/

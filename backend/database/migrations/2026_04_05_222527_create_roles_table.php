@@ -12,10 +12,10 @@ return new class extends Migration
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
             $table->string('nombre', 60)->unique();
-            // dependencia  → usuario externo de una dependencia gubernamental
-            // trabajador_gd → personal interno de Gobierno Digital (triage/dictamen)
-            // superadmin    → acceso total + CRUD del catálogo
-            // estadisticas  → solo lectura de reportes y tableros
+            // dependencia   usuario externo de una dependencia gubernamental
+            // trabajador_gd  personal interno de Gobierno Digital (triage/dictamen)
+            // superadmin     acceso total + CRUD del catálogo
+            // estadisticas   solo lectura de reportes y tableros
             $table->string('slug', 60)->unique();
             $table->text('descripcion')->nullable();
             $table->timestamps();

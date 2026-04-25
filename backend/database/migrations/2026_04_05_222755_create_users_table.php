@@ -13,7 +13,7 @@ return new class extends Migration
             $table->string('nombre', 120);
             $table->string('apellidos', 120);
             $table->string('email', 180)->unique();
-            $table->string('password');                         // bcrypt — nunca texto plano
+            $table->string('password');                         // bcrypt — nunca texto plano pls
 
             // Relación con rol (un usuario tiene un rol principal)
             $table->foreignId('role_id')
@@ -26,7 +26,7 @@ return new class extends Migration
                   ->constrained('dependencias')
                   ->nullOnDelete();
 
-            $table->string('cargo', 180)->nullable();           // Ej: "Enlace de Sistemas"
+            $table->string('cargo', 180)->nullable();         
             $table->string('telefono', 30)->nullable();
             $table->boolean('activo')->default(true);
             $table->timestamp('email_verified_at')->nullable();
@@ -40,7 +40,7 @@ return new class extends Migration
             $table->index('dependencia_id');
         });
 
-        // Tokens de Sanctum (autenticación API)
+        // Tokens de autentificacion sactun in laravel ojo me preguntan que pedo
         Schema::create('personal_access_tokens', function (Blueprint $table) {
             $table->id();
             $table->morphs('tokenable');
