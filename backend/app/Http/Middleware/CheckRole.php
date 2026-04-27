@@ -16,7 +16,7 @@ class CheckRole
 
         // esto es para verificar si hay un usuario autenticado haciendo la petición
         if (!$user) {
-            return response()->json([ //Devolver una respueesta JSON para detener lo y no mostrar la pagina
+            return response()->json([ //Devolver una respuesta JSON para detener lo y no mostrar la pagina
                 'success' => false,
                 'message' => 'No estás autenticado usuario.'
             ], 401);
